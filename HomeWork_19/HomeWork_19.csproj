@@ -67,6 +67,7 @@
     <Compile Include="AnimalFactory.cs" />
     <Compile Include="ISaver.cs" />
     <Compile Include="Repository.cs" />
+    <Compile Include="RepositoryFactory.cs" />
     <Compile Include="SaveJson.cs" />
     <Compile Include="SaveTxt.cs" />
     <Compile Include="UnkownAnimal.cs" />

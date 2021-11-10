@@ -30,7 +30,7 @@ namespace HomeWork_19
 
         private void Clic_Create(object sender, RoutedEventArgs e)
         {
-            repository = AnimalFactory.GetRepository();
+            repository = RepositoryFactory.GetRepository();
             lvLAnimal.ItemsSource = repository.bd;
         }
 
@@ -42,7 +42,7 @@ namespace HomeWork_19
 
         private void Clic_Add(object sender, RoutedEventArgs e)
         {
-            repository.bd.Add(CreateRandomAnimal());
+            repository.bd.Add(AnimalFactory.GetAnimal());
             Refresh();
         }
 
@@ -55,25 +55,10 @@ namespace HomeWork_19
             lvLAnimal.Items.Refresh();
         }
 
-        /// <summary>
-        /// добавить случайное животное в список
-        /// </summary>
-        private IAnimal CreateRandomAnimal()
-        {    
-            switch (random.Next(4))
-            {
-                case 1: return new Bird("Птичка", random.Next(10, 99));
-                case 2: return new Mammals("Человек", random.Next(1, 99)); 
-                case 3: return new Amphibians("Земноводное", random.Next(1, 99));
-                default: return new UnkownAnimal();
-            }
-
-        }
-
 
         private void lvLAnimal_SelectionChanged(object sender, MouseButtonEventArgs e)
         {
-            repository.bd[lvLAnimal.SelectedIndex] = CreateRandomAnimal();
+            repository.bd[lvLAnimal.SelectedIndex] = AnimalFactory.GetAnimal();
             Refresh();
         }
 

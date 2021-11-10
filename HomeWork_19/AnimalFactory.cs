@@ -1,29 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace HomeWork_19
 {
     class AnimalFactory
     {
-        public static Repository GetRepository()
+        public static IAnimal GetAnimal()
         {
             Random random = new Random();
-            List<IAnimal> list = new List<IAnimal>();
-
-            for (int i = 0; i < random.Next(10,100); i++)
+            switch (random.Next(0,3))
             {
-                switch (random.Next(4))
-                {
-                    case 1: list.Add(new Bird("Птичка", random.Next(10,99))); break;
-                    case 2: list.Add(new Mammals("Человек", random.Next(1,99))); break;
-                    case 3: list.Add(new Amphibians("Земноводное", random.Next(1,99))); break;
-                    default:  list.Add(new UnkownAnimal()); break;
-                }
+                case 1: 
+                    return new Bird("Птичка", random.Next(10, 99));
+                case 2: 
+                    return new Mammals("Человек", random.Next(1, 99));
+                case 3:
+                    return new Amphibians("Земноводное", random.Next(1, 99));
+                default: 
+                    return new UnkownAnimal();
             }
-
-            return new Repository(list);
         }
-
 
 
     }
